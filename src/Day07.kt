@@ -18,6 +18,7 @@ class FileSystem(val root: Directory) {
             val tree = input.map { line ->
                 parseOutput(line)
             }.fold(Directory(File("/", true, 0, null), mutableListOf())) { acc, out ->
+//                this is a crazy way for building hierarchical entity, better not to do it this way
                 when (out) {
                     is FileOutput -> {
                         acc.addItem(File(out.name, false, out.size, acc))
@@ -124,6 +125,8 @@ class File(
 }
 
 class Directory(private val f: File, private val contents: MutableList<FsItem> = mutableListOf()) : FsItem by f {
+//    size becomes incorrect when new item added after lazy initialization,
+//    but in scope of the task we assume this does not happen
     private val size: Long by lazy { contents.sumOf { it.size() } }
     fun addItem(fsItem: FsItem) {
         contents.add(fsItem)
