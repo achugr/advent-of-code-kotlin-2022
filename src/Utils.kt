@@ -1,5 +1,4 @@
 import java.io.File
-import java.io.SequenceInputStream
 import java.math.BigInteger
 import java.security.MessageDigest
 
