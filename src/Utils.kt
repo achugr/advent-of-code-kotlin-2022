@@ -1,4 +1,5 @@
 import java.io.File
+import java.io.SequenceInputStream
 import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -7,6 +8,7 @@ import java.security.MessageDigest
  */
 fun readInput(name: String) = File("src", "$name.txt")
     .readLines()
+fun readInputText(name: String) = File("src", "$name.txt").readText()
 
 fun readInputLine(name: String) = File("src", "$name.txt")
     .readLines()
